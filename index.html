@@ -6,25 +6,28 @@
 <title>Diego Bardalez // Offensive Security Engineer</title>
 <meta name="description" content="Diego Bardalez — Offensive Security Engineer, Red Team Operator y Pentester. eJPT, CRTA, AD-RTS, Cloud Red Teaming, CLLMSE.">
 <link rel="icon" href="data:,">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<canvas id="matrix"></canvas>
-<div class="scanlines"></div>
-<div class="vignette"></div>
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="spotlight" id="spotlight"></div>
+<div class="noise-overlay"></div>
 
-<header class="nav">
+<header class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#inicio" class="brand">root@diegobardalez<span class="cur">:~#</span></a>
+    <a href="#inicio" class="brand"><span class="brand-mark">DB</span><span class="brand-dot">_</span></a>
     <nav class="nav-links" id="nav-links">
-      <a href="#sobre-mi">./about</a>
-      <a href="#certificaciones">./certs</a>
-      <a href="#habilidades">./skills</a>
-      <a href="#logros">./logros</a>
-      <a href="#contacto">./contact</a>
+      <a href="#sobre-mi" data-nav>Sobre mí</a>
+      <a href="#certificaciones" data-nav>Certificaciones</a>
+      <a href="#habilidades" data-nav>Skills</a>
+      <a href="#logros" data-nav>Logros</a>
+      <a href="#contacto" data-nav>Contacto</a>
     </nav>
+    <a href="#contacto" class="nav-cta">Contactar</a>
     <button id="menu-toggle" class="menu-btn" aria-label="Abrir menú">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
@@ -34,62 +37,72 @@
 <main>
   <!-- HERO -->
   <section id="inicio" class="hero">
-    <div class="hero-inner">
-      <div class="hero-photo">
-        <img src="assets/diego.jpg" alt="Diego Bardalez">
-      </div>
-      <p class="eyebrow">[ connection established — access granted ]</p>
-      <h1 class="glitch" data-text="DIEGO BARDALEZ">DIEGO BARDALEZ</h1>
+    <div class="hero-bg">
+      <img src="assets/diego.jpg" alt="" class="hero-bg-img">
+      <div class="hero-bg-scrim"></div>
+      <div class="hero-bg-grid"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="eyebrow"><span class="eyebrow-dot"></span>disponible para proyectos de seguridad ofensiva</p>
+      <h1 class="hero-title">DIEGO<br>BARDALEZ</h1>
       <p class="hero-role">
-        <span class="gt">&gt;</span> <span class="type-target" id="type-target"></span><span class="cursor">▌</span>
+        <span class="type-target" id="type-target"></span><span class="cursor">|</span>
       </p>
 
-      <div class="terminal hero-terminal">
-        <div class="terminal-bar">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="terminal-title">whoami --verbose</span>
-        </div>
-        <pre class="terminal-body"><code><span class="tk-prompt">root@diegobardalez</span><span class="tk-sep">:~#</span> whoami --verbose
-
-<span class="tk-key">alias</span>........: <span class="tk-str">Diego Bardalez</span>
-<span class="tk-key">role</span>.........: <span class="tk-str">Offensive Security Engineer / Red Team Operator / Pentester</span>
-<span class="tk-key">focus</span>........: <span class="tk-str">Active Directory · Cloud Red Teaming · AI / LLM Security</span>
-<span class="tk-key">certs</span>........: <span class="tk-str">eJPT, CRTA, AD-RTS, Cloud Red Teaming, CLLMSE</span>
-<span class="tk-key">status</span>.......: <span class="tk-str">breaking things so you don't have to</span>
-
-<span class="tk-prompt">root@diegobardalez</span><span class="tk-sep">:~#</span> <span class="blink-cursor">_</span></code></pre>
+      <div class="hero-badges">
+        <span class="mini-badge">eJPT</span>
+        <span class="mini-badge">CRTA</span>
+        <span class="mini-badge">AD-RTS</span>
+        <span class="mini-badge">Cloud Red Team</span>
+        <span class="mini-badge">CLLMSE</span>
       </div>
 
       <div class="hero-actions">
-        <a href="#certificaciones" class="btn btn-primary">&gt; ver_certificaciones</a>
-        <a href="#contacto" class="btn btn-ghost">&gt; contactar</a>
+        <a href="#logros" class="btn btn-primary">Ver trayectoria</a>
+        <a href="#contacto" class="btn btn-ghost">Contactar</a>
       </div>
 
       <div class="hero-socials">
-        <a href="https://github.com/diegobardalez" target="_blank" rel="noopener" aria-label="GitHub">[ github ]</a>
-        <a href="https://www.linkedin.com/in/diegobardalez/" target="_blank" rel="noopener" aria-label="LinkedIn">[ linkedin ]</a>
-        <a href="mailto:diego.bardalez@gmail.com" aria-label="Email">[ email ]</a>
+        <a href="https://github.com/diegobardalez" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.28 0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/diegobardalez/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:diego.bardalez@gmail.com" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+          <span>Email</span>
+        </a>
       </div>
     </div>
-    <a href="#sobre-mi" class="scroll-hint">▼</a>
+
+    <a href="#sobre-mi" class="scroll-hint" aria-label="Bajar">
+      <span>scroll</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </a>
   </section>
 
   <!-- SOBRE MI -->
   <section id="sobre-mi" class="section">
-    <h2 class="section-title"><span class="idx">$</span> cat about.txt</h2>
-    <div class="terminal">
-      <div class="terminal-bar">
-        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        <span class="terminal-title">about.txt</span>
-      </div>
-      <div class="terminal-body prose">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Sobre mí</h2>
+    </div>
+    <div class="about-layout">
+      <div class="about-copy reveal">
+        <p class="lede">
+          Encuentro lo que un atacante real encontraría — antes de que lo haga.
+        </p>
         <p>
           Soy <strong>Offensive Security Engineer</strong>, especializado en <strong>Red Team</strong> y
           <strong>pentesting</strong>: ataco aplicaciones web, móviles, infraestructura, Active Directory
-          y entornos cloud para encontrar lo que un atacante real encontraría, antes de que lo haga.
+          y entornos cloud para exponer riesgos reales, no solo checklist de cumplimiento.
         </p>
         <p>
-          Trabajo entregando compromisos de ethical hacking de punta a punta —reconocimiento, explotación,
+          Entrego compromisos de ethical hacking de punta a punta —reconocimiento, explotación,
           post-explotación y movimiento lateral— para empresas de banca, salud y seguros, con informes
           técnicos y ejecutivos como resultado final.
         </p>
@@ -99,30 +112,62 @@
           ofensiva aplicada a la nueva superficie de ataque.
         </p>
       </div>
+      <div class="about-stats reveal">
+        <div class="stat-row">
+          <span class="stat-num">5</span>
+          <span class="stat-label">Certificaciones en Red Team, cloud y seguridad de IA</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Años investigando y reportando vulnerabilidades (desde 2014)</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Países donde expuse como ponente (Perú, Bolivia, Argentina)</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CERTIFICACIONES -->
   <section id="certificaciones" class="section alt">
-    <h2 class="section-title"><span class="idx">$</span> ls ./certifications</h2>
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Certificaciones</h2>
+    </div>
     <div class="certs-grid">
-      <div class="cert-card">
+      <div class="cert-card reveal">
+        <div class="cert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+        </div>
         <span class="cert-acronym">eJPT</span>
         <span class="cert-name">Junior Penetration Tester</span>
       </div>
-      <div class="cert-card">
+      <div class="cert-card reveal">
+        <div class="cert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
         <span class="cert-acronym">CRTA</span>
         <span class="cert-name">Certified Red Team Analyst</span>
       </div>
-      <div class="cert-card">
+      <div class="cert-card reveal">
+        <div class="cert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7" cy="7" r=".6" fill="currentColor"/><circle cx="7" cy="17" r=".6" fill="currentColor"/></svg>
+        </div>
         <span class="cert-acronym">AD-RTS</span>
         <span class="cert-name">Active Directory Red Team Specialist</span>
       </div>
-      <div class="cert-card">
+      <div class="cert-card reveal">
+        <div class="cert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a4.5 4.5 0 0 1-1-8.9 5.5 5.5 0 0 1 10.8-1.7A4 4 0 0 1 17 18H7z"/></svg>
+        </div>
         <span class="cert-acronym">CRT-Cloud</span>
         <span class="cert-name">Cloud Red Teaming</span>
       </div>
-      <div class="cert-card">
+      <div class="cert-card reveal">
+        <div class="cert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+        </div>
         <span class="cert-acronym">CLLMSE</span>
         <span class="cert-name">Certified LLM Security Expert</span>
       </div>
@@ -131,10 +176,13 @@
 
   <!-- HABILIDADES -->
   <section id="habilidades" class="section">
-    <h2 class="section-title"><span class="idx">$</span> nmap --skills -sV</h2>
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Skills</h2>
+    </div>
     <div class="skills-grid">
-      <div class="skill-card">
-        <h3>01. Red Team &amp; Pentesting</h3>
+      <div class="skill-card reveal">
+        <h3>Red Team &amp; Pentesting</h3>
         <ul class="tag-list">
           <li>Pentesting web / mobile / infra</li>
           <li>Operaciones de Red Team</li>
@@ -142,40 +190,40 @@
           <li>Movimiento lateral &amp; post-explotación</li>
         </ul>
       </div>
-      <div class="skill-card">
-        <h3>02. Cloud Offensive Security</h3>
+      <div class="skill-card reveal">
+        <h3>Cloud Offensive Security</h3>
         <ul class="tag-list">
           <li>Cloud Red Teaming</li>
           <li>Abuso de IAM / privilegios cloud</li>
           <li>Reconocimiento de infraestructura cloud</li>
         </ul>
       </div>
-      <div class="skill-card">
-        <h3>03. AI / LLM Security</h3>
+      <div class="skill-card reveal">
+        <h3>AI / LLM Security</h3>
         <ul class="tag-list">
           <li>Red teaming de LLMs</li>
           <li>Prompt injection &amp; jailbreaks</li>
           <li>Hardening de apps con IA</li>
         </ul>
       </div>
-      <div class="skill-card">
-        <h3>04. Análisis &amp; Reversing</h3>
+      <div class="skill-card reveal">
+        <h3>Análisis &amp; Reversing</h3>
         <ul class="tag-list">
           <li>Ingeniería inversa</li>
           <li>Análisis de protocolos propietarios</li>
           <li>Criptografía aplicada ofensiva</li>
         </ul>
       </div>
-      <div class="skill-card">
-        <h3>05. Reporting</h3>
+      <div class="skill-card reveal">
+        <h3>Reporting</h3>
         <ul class="tag-list">
           <li>Informes técnicos detallados</li>
           <li>Resúmenes ejecutivos</li>
           <li>Comunicación de riesgo a negocio</li>
         </ul>
       </div>
-      <div class="skill-card">
-        <h3>06. Tooling</h3>
+      <div class="skill-card reveal">
+        <h3>Tooling</h3>
         <ul class="tag-list">
           <li>Scripting de ofensiva (automatización)</li>
           <li>Herramientas internas de gestión de pentest</li>
@@ -187,51 +235,118 @@
 
   <!-- LOGROS -->
   <section id="logros" class="section alt">
-    <h2 class="section-title"><span class="idx">$</span> cat logros.log</h2>
-    <div class="terminal log-terminal">
-      <div class="terminal-bar">
-        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        <span class="terminal-title">logros.log</span>
-      </div>
-      <div class="terminal-body log-body">
-<ul class="log-list">
-  <li><span class="log-date">2025-08</span><span class="log-org">CyberWarFare Labs</span><span class="log-text">Certificación Multi-Cloud Red Teaming Analyst</span></li>
-  <li><span class="log-date">2025-07</span><span class="log-org">CyberWarFare Labs</span><span class="log-text">Certificación CRTA — Certified Red Team Analyst</span></li>
-  <li><span class="log-date">2024-10</span><span class="log-org">Universidad Privada de Tacna</span><span class="log-text">Ponente invitado, Seminario Internacional CATEC 2024-II — "Introducción al hacking ético"</span></li>
-  <li><span class="log-date">2024-03/12</span><span class="log-org">Universidad Abierta Interamericana (Argentina)</span><span class="log-text">Diplomatura Universitaria Internacional en Técnicas de Hacking Ético — 512 hs.</span></li>
-  <li><span class="log-date">2024-01</span><span class="log-org">AGETIC — Gobierno de Bolivia</span><span class="log-text">1er lugar, Reporte de Vulnerabilidades "Muro de la Fama 2022-2023"</span></li>
-  <li><span class="log-date">2023-11</span><span class="log-org">CSIRT Gobierno de Chile</span><span class="log-text">Reconocido en el "Muro de la Fama" (x2) por reporte de vulnerabilidades, incl. SQL Injection</span></li>
-  <li><span class="log-date">2023-10</span><span class="log-org">USMP — Universidad de San Martín de Porres</span><span class="log-text">Ponente, XII Congreso Internacional EduTicInnova 2023</span></li>
-  <li><span class="log-date">2023-09</span><span class="log-org">Ciencia Latina — Revista Científica Multidisciplinar</span><span class="log-text">Coautor de artículo científico indexado sobre herramientas de investigación académica</span></li>
-  <li><span class="log-date">2023-06</span><span class="log-org">INE / eLearnSecurity</span><span class="log-text">Certificación eJPT — Junior Penetration Tester</span></li>
-  <li><span class="log-date">2022-05</span><span class="log-org">BSides Argentina</span><span class="log-text">Ponente, representando a Perú</span></li>
-  <li><span class="log-date">2021-12</span><span class="log-org">BSides Bolivia</span><span class="log-text">Ponente — "Errores típicos de configuración que pueden causar accesos no autorizados"</span></li>
-  <li><span class="log-date">2014-12</span><span class="log-org">SAP</span><span class="log-text">Reconocido en el listado oficial de investigadores de seguridad (Security Researcher Acknowledgments)</span></li>
-</ul>
-      </div>
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Trayectoria</h2>
     </div>
+    <ol class="timeline">
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2025 — Ago</span>
+        <div class="timeline-card">
+          <span class="timeline-org">CyberWarFare Labs</span>
+          <p>Certificación Multi-Cloud Red Teaming Analyst</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2025 — Jul</span>
+        <div class="timeline-card">
+          <span class="timeline-org">CyberWarFare Labs</span>
+          <p>Certificación CRTA — Certified Red Team Analyst</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2024 — Oct</span>
+        <div class="timeline-card">
+          <span class="timeline-org">Universidad Privada de Tacna</span>
+          <p>Ponente invitado, Seminario Internacional CATEC 2024-II — "Introducción al hacking ético"</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2024 — Mar/Dic</span>
+        <div class="timeline-card">
+          <span class="timeline-org">Universidad Abierta Interamericana (Argentina)</span>
+          <p>Diplomatura Universitaria Internacional en Técnicas de Hacking Ético — 512 hs. reloj</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2024 — Ene</span>
+        <div class="timeline-card">
+          <span class="timeline-org">AGETIC — Gobierno de Bolivia</span>
+          <p>1er lugar, Reporte de Vulnerabilidades "Muro de la Fama 2022-2023"</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2023 — Nov</span>
+        <div class="timeline-card">
+          <span class="timeline-org">CSIRT Gobierno de Chile</span>
+          <p>Reconocido en el "Muro de la Fama" (x2) por reporte de vulnerabilidades, incl. SQL Injection</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2023 — Oct</span>
+        <div class="timeline-card">
+          <span class="timeline-org">USMP — San Martín de Porres</span>
+          <p>Ponente, XII Congreso Internacional EduTicInnova 2023</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2023 — Sep</span>
+        <div class="timeline-card">
+          <span class="timeline-org">Ciencia Latina — Revista Científica</span>
+          <p>Coautor de artículo científico indexado sobre herramientas de investigación académica</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2023 — Jun</span>
+        <div class="timeline-card">
+          <span class="timeline-org">INE / eLearnSecurity</span>
+          <p>Certificación eJPT — Junior Penetration Tester</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2022 — May</span>
+        <div class="timeline-card">
+          <span class="timeline-org">BSides Argentina</span>
+          <p>Ponente internacional, representando a Perú</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2021 — Dic</span>
+        <div class="timeline-card">
+          <span class="timeline-org">BSides Bolivia</span>
+          <p>Ponente — "Errores típicos de configuración que pueden causar accesos no autorizados"</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-date">2014 — Dic</span>
+        <div class="timeline-card">
+          <span class="timeline-org">SAP</span>
+          <p>Reconocido en el listado oficial de Security Researcher Acknowledgments</p>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <!-- CONTACTO -->
   <section id="contacto" class="section contact-section">
-    <h2 class="section-title"><span class="idx">$</span> ./contact.sh</h2>
-    <div class="terminal contact-terminal">
-      <div class="terminal-bar">
-        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        <span class="terminal-title">contact.sh</span>
-      </div>
-      <div class="terminal-body">
-        <p>&gt; ¿Necesitas un pentest, una evaluación de Red Team o una auditoría de seguridad en IA?</p>
-        <p>&gt; <a href="mailto:diego.bardalez@gmail.com" class="inline-link">send_message --to diego.bardalez@gmail.com</a></p>
-        <p>&gt; <a href="https://www.linkedin.com/in/diegobardalez/" target="_blank" rel="noopener" class="inline-link">connect --linkedin</a></p>
-        <p>&gt; <a href="https://github.com/diegobardalez" target="_blank" rel="noopener" class="inline-link">follow --github</a></p>
+    <div class="contact-inner reveal">
+      <span class="section-num center">05</span>
+      <h2 class="contact-title">¿Hablamos de tu<br>seguridad ofensiva?</h2>
+      <p class="contact-lede">
+        Pentest, evaluación de Red Team o auditoría de seguridad en IA — escríbeme y lo conversamos.
+      </p>
+      <a href="mailto:diego.bardalez@gmail.com" class="btn btn-primary btn-lg">diego.bardalez@gmail.com</a>
+      <div class="contact-socials">
+        <a href="https://github.com/diegobardalez" target="_blank" rel="noopener">GitHub</a>
+        <span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/diegobardalez/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </section>
 </main>
 
 <footer class="footer">
-  <p>root@diegobardalez:~# echo "© <span id="year"></span> Diego Bardalez — end of file"</p>
+  <p>© <span id="year"></span> Diego Bardalez. Offensive Security Engineer.</p>
 </footer>
 
 <script src="script.js"></script>
