@@ -258,10 +258,10 @@ img{max-width:100%; display:block;}
 @media (max-width:860px){ .about-layout{ grid-template-columns:1fr; gap:36px; } }
 
 /* CERTS */
-.certs-grid{ display:grid; grid-template-columns:repeat(5, 1fr); gap:18px; }
+.certs-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:18px; }
 .cert-card{
   background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg);
-  padding:28px 18px; text-align:center;
+  padding:28px 20px; text-align:center; display:flex; flex-direction:column; align-items:center;
   transition:transform .25s ease, border-color .25s ease, background .25s ease;
 }
 .cert-card:hover{
@@ -270,13 +270,17 @@ img{max-width:100%; display:block;}
 }
 .cert-icon{
   width:46px; height:46px; margin:0 auto 16px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
   background:var(--green-soft); color:var(--green);
 }
-.cert-acronym{ display:block; font-family:var(--display); font-weight:700; font-size:1.15rem; margin-bottom:8px; color:var(--text); }
-.cert-name{ display:block; font-size:.76rem; color:var(--text-dim); line-height:1.4; }
+.cert-acronym{ display:block; font-family:var(--display); font-weight:700; font-size:1.1rem; margin-bottom:8px; color:var(--text); }
+.cert-name{ display:block; font-size:.76rem; color:var(--text-dim); line-height:1.4; flex:1; }
+.cert-verify{
+  display:inline-block; margin-top:14px; font-size:.7rem; font-weight:600; color:var(--green);
+  border-top:1px solid var(--border); padding-top:12px; width:100%;
+}
+.cert-verify:hover{ text-decoration:underline; }
 
-@media (max-width:980px){ .certs-grid{ grid-template-columns:repeat(3,1fr); } }
 @media (max-width:560px){ .certs-grid{ grid-template-columns:repeat(2,1fr); } }
 
 /* SKILLS */
