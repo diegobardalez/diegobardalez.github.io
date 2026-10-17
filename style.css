@@ -280,6 +280,7 @@ img{max-width:100%; display:block;}
   border-top:1px solid var(--border); padding-top:12px; width:100%;
 }
 .cert-verify:hover{ text-decoration:underline; }
+.cert-verify small{ color:var(--text-faint); font-weight:500; }
 
 @media (max-width:560px){ .certs-grid{ grid-template-columns:repeat(2,1fr); } }
 
@@ -324,6 +325,8 @@ img{max-width:100%; display:block;}
 .timeline-card:hover{ border-color:var(--border-hover); transform:translateX(4px); }
 .timeline-org{ display:block; font-weight:700; color:var(--green); font-size:.86rem; margin-bottom:6px; }
 .timeline-card p{ color:var(--text-dim); font-size:.86rem; }
+.timeline-verify{ color:var(--green); white-space:nowrap; }
+.timeline-verify:hover{ text-decoration:underline; }
 
 @media (max-width:620px){
   .timeline::before{ left:6px; }
